@@ -1,6 +1,6 @@
-package com.em.event_management.jwt.impl;
+package com.em.event_management.jwt_and_security.impl;
 
-import com.em.event_management.jwt.JWTService;
+import com.em.event_management.jwt_and_security.JWTService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
