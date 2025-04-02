@@ -2,6 +2,8 @@ package com.em.event_management.dto;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class JwtAuthenticationResponse {
     private String token;
@@ -9,4 +11,5 @@ public class JwtAuthenticationResponse {
     private String username;
     private String refreshToken;
     private Long userId;
+    private Date expirationTime;
 }
