@@ -9,6 +9,8 @@ import com.em.event_management.jwt.JWTService;
 import com.em.event_management.model.Role;
 import com.em.event_management.model.User;
 import com.em.event_management.repository.UserRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
