@@ -30,6 +30,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return Character.toUpperCase(string.charAt(0)) + string.substring(1);
     }
 
+    @Override
     public User signUp(SignUpRequest signUpRequest) {
         User user = new User();
         user.setUsername(signUpRequest.getUsername());
@@ -44,6 +45,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return userRepository.save(user);
     }
 
+    @Override
     public JwtAuthenticationResponse signIn(SignInRequest signInRequest) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
@@ -72,6 +74,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
     }
 
+    @Override
     public JwtAuthenticationResponse refreshToken(RefreshTokenRequest refreshTokenRequest) {
         String userName = jwtService.extractUsername(refreshTokenRequest.getToken());
         User user = userRepository.findByUsername(userName).orElseThrow();
