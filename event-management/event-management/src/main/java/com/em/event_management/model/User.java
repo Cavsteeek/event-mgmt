@@ -21,24 +21,24 @@ public class User implements UserDetails {
     private Long id;
 
     @NotNull
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String username;
 
     @NotNull
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String password;
 
     @NotNull
-    @Column(length = 100)
+    @Column(length = 100, nullable = false)
     private String firstName;
 
     @Email
     @NotNull
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
 
     @NotNull
-    @Column(length = 100)
+    @Column(length = 100, nullable = false)
     private String lastName;
 
     @NotNull

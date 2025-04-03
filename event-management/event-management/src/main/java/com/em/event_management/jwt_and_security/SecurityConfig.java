@@ -1,5 +1,6 @@
 package com.em.event_management.jwt_and_security;
 
+import com.em.event_management.model.Role;
 import com.em.event_management.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -30,6 +31,8 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
+                        .requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers("/api/v1/user/**").hasRole(Role.ADMIN.name())
                         .anyRequest()
                         .authenticated()
                 )

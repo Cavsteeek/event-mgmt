@@ -10,13 +10,13 @@ import java.time.LocalDate;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Event_ID;
+    private Long eventID;
 
-    private String Event_Name;
+    private String eventName;
 
-    private String Event_Description;
+    private String eventDescription;
 
-    private LocalDate Date;
+    private String eventDate;
 
-    private String Event_Venue;
+    private String eventVenue;
 }
