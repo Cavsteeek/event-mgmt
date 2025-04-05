@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Map;
 import java.util.function.Function;
@@ -70,7 +72,7 @@ public class JWTServiceImpl implements JWTService {
                 .builder().setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 12))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 72))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }

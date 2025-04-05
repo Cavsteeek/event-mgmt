@@ -80,11 +80,18 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         User user = userRepository.findByUsername(userName).orElseThrow();
         if (jwtService.isTokenValid(refreshTokenRequest.getToken(), user)) {
             var jwt = jwtService.generateToken(user);
+            var username = jwtService.extractUsername(jwt);
+            var expirationTime = jwtService.extractExpiration(jwt);
 
             JwtAuthenticationResponse jwtAuthenticationResponse = new JwtAuthenticationResponse();
 
             jwtAuthenticationResponse.setToken(jwt);
+            jwtAuthenticationResponse.setUsername(username);
+            jwtAuthenticationResponse.setUsername(user.getUsername());
+            jwtAuthenticationResponse.setRole(user.getRole().toString());
             jwtAuthenticationResponse.setRefreshToken(refreshTokenRequest.getToken());
+            jwtAuthenticationResponse.setUserId(user.getId());
+            jwtAuthenticationResponse.setExpirationTime(expirationTime);
             return jwtAuthenticationResponse;
         }
         return null;

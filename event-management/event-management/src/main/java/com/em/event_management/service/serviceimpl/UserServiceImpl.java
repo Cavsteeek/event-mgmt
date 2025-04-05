@@ -1,5 +1,6 @@
 package com.em.event_management.service.serviceimpl;
 
+import com.em.event_management.model.User;
 import com.em.event_management.repository.UserRepository;
 import com.em.event_management.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +25,11 @@ public class UserServiceImpl implements UserService {
     public UserDetailsService userDetailsService(){
         return username -> userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    }
+
+    @Override
+    public List<User> findAllUsers(){
+        return userRepository.findAll();
     }
 
     @Override
