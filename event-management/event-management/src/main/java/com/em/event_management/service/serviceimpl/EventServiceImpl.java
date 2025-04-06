@@ -18,16 +18,17 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public void newEvent(NewEventDto event){
+    public Event newEvent(NewEventDto event){
         try{
             Event newEvent = new Event();
             newEvent.setEventName(event.getEventName());
             newEvent.setEventDescription(event.getEventDescription());
             newEvent.setEventDate(event.getEventDate());
             newEvent.setEventVenue(event.getEventVenue());
-            eventRepository.save(newEvent);
+            return eventRepository.save(newEvent);
         }catch(Exception e){
             e.printStackTrace();
+            throw new RuntimeException("Error creating new event", e);
         }
     }
 

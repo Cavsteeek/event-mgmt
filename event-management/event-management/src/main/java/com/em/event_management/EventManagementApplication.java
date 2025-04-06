@@ -35,7 +35,7 @@ public class EventManagementApplication implements CommandLineRunner {
 			 admin.setEmail("admin@email.com");
 			 admin.setPassword(new BCryptPasswordEncoder().encode("admin"));
 			 admin.setRole(Role.ADMIN);
-			admin.setAccountCreatedAt(LocalDateTime.now());
+			 admin.setAccountCreatedAt(LocalDateTime.now());
 			 userRepository.save(admin);
 			 System.out.println("New Admin Created Successfully");
 		} else{
