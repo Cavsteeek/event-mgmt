@@ -34,6 +34,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers("/api/v1/user/admin/**").hasAnyAuthority(Role.ADMIN.name())
+                        .requestMatchers("/api/v1/event/**").hasAnyAuthority(Role.ADMIN.name())
+                        .requestMatchers("/api/v1/event/new-event").hasAnyAuthority(Role.USER.name())
                         .anyRequest()
                         .authenticated()
                 )
