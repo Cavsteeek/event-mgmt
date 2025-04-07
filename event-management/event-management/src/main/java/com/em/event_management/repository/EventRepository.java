@@ -8,9 +8,8 @@ import java.time.LocalDate;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
-//    Event findByEventID(Long eventID);
+    Event findByEventID(Long eventID);
     Event findByEventName(String eventName);
-//    Event findByEventVenue(String eventVenue);
-//    Event findByEventDate(LocalDate eventDate);
 
+    boolean existsByEventName(String eventName);
 }

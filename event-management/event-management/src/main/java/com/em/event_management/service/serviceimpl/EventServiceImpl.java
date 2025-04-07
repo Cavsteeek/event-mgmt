@@ -14,7 +14,18 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Event findEventByName(String EventName){
-        return eventRepository.findByEventName(EventName);
+        if(eventRepository.existsByEventName(EventName)){
+                return eventRepository.findByEventName(EventName);
+        }
+        return null;
+    }
+
+    @Override
+    public Event findEventById(Long EventID){
+        if (eventRepository.existsById(EventID)){
+            return eventRepository.findByEventID(EventID);
+        }
+        return null;
     }
 
     @Override
@@ -34,6 +45,8 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public void deleteEvent(Long EventId) {
-        eventRepository.deleteById(EventId);
+        if(eventRepository.existsById(EventId)){
+            eventRepository.deleteById(EventId);
+        }
     }
 }

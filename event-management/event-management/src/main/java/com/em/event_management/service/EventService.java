@@ -6,6 +6,8 @@ import com.em.event_management.model.Event;
 public interface EventService {
     Event findEventByName(String EventName);
 
+    Event findEventById(Long EventID);
+
     Event newEvent (NewEventDto event);
 
     void deleteEvent(Long EventId);
