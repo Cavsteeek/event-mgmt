@@ -23,7 +23,7 @@ public class EventManagementApplication implements CommandLineRunner {
 			throw new RuntimeException(e);
 		}
 	}
-
+dd
 	@Override
 	public void run(String... args) throws Exception {
 		User adminAccount = userRepository.findByRole(Role.ADMIN);
