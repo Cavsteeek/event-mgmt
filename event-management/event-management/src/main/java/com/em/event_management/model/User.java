@@ -15,6 +15,7 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @Data
+
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +26,7 @@ public class User implements UserDetails {
     private String username;
 
     @NotNull
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     private String password;
 
     @NotNull

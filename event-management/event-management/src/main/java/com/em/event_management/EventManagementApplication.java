@@ -14,32 +14,32 @@ import java.time.LocalDateTime;
 @SpringBootApplication
 @RequiredArgsConstructor
 public class EventManagementApplication implements CommandLineRunner {
-	private final UserRepository userRepository;
+    private final UserRepository userRepository;
 
-	public static void main(String[] args) {
-		try{
-			SpringApplication.run(EventManagementApplication.class, args);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
+    public static void main(String[] args) {
+        try {
+            SpringApplication.run(EventManagementApplication.class, args);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
-		User adminAccount = userRepository.findByRole(Role.ADMIN);
-		if (null == adminAccount) {
-			 User admin = new User();
-			 admin.setFirstName("Hober");
-			 admin.setLastName("Malo");
-			 admin.setUsername("admin");
-			 admin.setEmail("admin@email.com");
-			 admin.setPassword(new BCryptPasswordEncoder().encode("admin"));
-			 admin.setRole(Role.ADMIN);
-			 admin.setAccountCreatedAt(LocalDateTime.now());
-			 userRepository.save(admin);
-			 System.out.println("New Admin Created Successfully");
-		} else{
-			System.out.println("Admin User Already Exists");
-		}
-	}
+    @Override
+    public void run(String... args) throws Exception {
+        User adminAccount = userRepository.findByRole(Role.ADMIN);
+        if (null == adminAccount) {
+            User admin = new User();
+            admin.setFirstName("Hober");
+            admin.setLastName("Malo");
+            admin.setUsername("admin");
+            admin.setEmail("admin@email.com");
+            admin.setPassword(new BCryptPasswordEncoder().encode("admin"));
+            admin.setRole(Role.ADMIN);
+            admin.setAccountCreatedAt(LocalDateTime.now());
+            userRepository.save(admin);
+            System.out.println("New Admin Created Successfully");
+        } else {
+            System.out.println("Admin User Already Exists");
+        }
+    }
 }

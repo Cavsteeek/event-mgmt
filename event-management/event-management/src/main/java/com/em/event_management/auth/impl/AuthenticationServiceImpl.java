@@ -33,10 +33,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public User signUp(SignUpRequest signUpRequest) {
         User user = new User();
-        user.setUsername(signUpRequest.getUsername());
         user.setFirstName(capitalize(signUpRequest.getFirstName()));
         user.setLastName(capitalize(signUpRequest.getLastName()));
         user.setEmail(signUpRequest.getEmail());
+        user.setUsername(signUpRequest.getUsername());
         user.setRole(Role.USER);
         user.setAccountCreatedAt(LocalDateTime.now());
         user.setPassword(
