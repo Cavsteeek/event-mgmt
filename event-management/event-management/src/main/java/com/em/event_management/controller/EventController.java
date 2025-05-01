@@ -22,37 +22,37 @@ public class EventController {
 
     @GetMapping("/view-all-events")
     public ResponseEntity<?> viewAllEvents() {
-        try{
+        try {
             return new ResponseEntity<>(eventRepository.findAll(), HttpStatus.OK);
-        }catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("/view-event/{eventId})")
+    @GetMapping("/view-event/{eventId}")
     public ResponseEntity<?> viewEvent(@PathVariable Long eventId) {
-        try{
+        try {
             return new ResponseEntity<>(eventService.findEventById(eventId), HttpStatus.OK);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("/view-event/{eventName})")
-    public ResponseEntity<?> viewEvent(@PathVariable String eventName) {
-        try{
-            return new ResponseEntity<>(eventService.findEventByName(eventName), HttpStatus.OK);
-        } catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
-        }
-    }
+//    @GetMapping("/view-event/{eventName}")
+//    public ResponseEntity<?> viewEvent(@PathVariable String eventName) {
+//        try{
+//            return new ResponseEntity<>(eventService.findEventByName(eventName), HttpStatus.OK);
+//        } catch (Exception e){
+//            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+//        }
+//    }
 
     @DeleteMapping("/delete-event/{eventId}")
     public ResponseEntity<?> deleteEventById(@PathVariable Long eventId) {
-        try{
+        try {
             eventService.deleteEvent(eventId);
             return ResponseEntity.ok("Event Deleted Successfully");
-        }catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }

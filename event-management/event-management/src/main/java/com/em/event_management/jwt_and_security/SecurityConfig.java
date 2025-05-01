@@ -34,6 +34,7 @@ public class SecurityConfig {
                                 .requestMatchers("/api/v1/auth/**").permitAll()
                                 .requestMatchers("/api/v1/user/admin/all-users").hasAnyAuthority(Role.ADMIN.name())
 //                        .requestMatchers("/api/v1/event/**").hasAnyAuthority(Role.ADMIN.name())
+                                .requestMatchers("/api/v1/event/**").hasAnyAuthority(Role.USER.name(), Role.ADMIN.name())
                                 .requestMatchers("/api/v1/event/new-event").hasAnyAuthority(Role.USER.name(), Role.ADMIN.name())
                                 .anyRequest()
                                 .authenticated()
