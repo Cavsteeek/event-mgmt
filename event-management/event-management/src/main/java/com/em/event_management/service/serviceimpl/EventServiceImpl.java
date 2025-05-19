@@ -13,31 +13,28 @@ public class EventServiceImpl implements EventService {
     private final EventRepository eventRepository;
 
     @Override
-    public Event findEventByName(String EventName){
-        if(eventRepository.existsByEventName(EventName)){
-                return eventRepository.findByEventName(EventName);
-        }
-        return null;
+    public Event findEventById(Long eventID) {
+        return eventRepository.findById(eventID)
+                .orElseThrow(() -> new RuntimeException("Event not found with ID: " + eventID));
     }
 
     @Override
-    public Event findEventById(Long EventID){
-        if (eventRepository.existsById(EventID)){
-            return eventRepository.findByEventID(EventID);
-        }
-        return null;
+    public Event findEventByName(String eventName) {
+        return eventRepository.findByEventName(eventName)
+                .orElseThrow(() -> new RuntimeException("Event not found with name: " + eventName));
     }
 
+
     @Override
-    public Event newEvent(NewEventDto event){
-        try{
+    public Event newEvent(NewEventDto event) {
+        try {
             Event newEvent = new Event();
             newEvent.setEventName(event.getEventName());
             newEvent.setEventDescription(event.getEventDescription());
             newEvent.setEventDate(event.getEventDate());
             newEvent.setEventVenue(event.getEventVenue());
             return eventRepository.save(newEvent);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("Error creating new event", e);
         }
@@ -45,7 +42,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public void deleteEvent(Long EventId) {
-        if(eventRepository.existsById(EventId)){
+        if (eventRepository.existsById(EventId)) {
             eventRepository.deleteById(EventId);
         }
     }

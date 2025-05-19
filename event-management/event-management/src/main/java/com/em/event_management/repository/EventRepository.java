@@ -4,12 +4,13 @@ import com.em.event_management.model.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
+import java.util.Optional;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
     Event findByEventID(Long eventID);
-    Event findByEventName(String eventName);
+
+    Optional<Event> findByEventName(String eventName);
 
     boolean existsByEventName(String eventName);
 }

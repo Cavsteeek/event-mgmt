@@ -38,14 +38,14 @@ public class EventController {
         }
     }
 
-//    @GetMapping("/view-event/{eventName}")
-//    public ResponseEntity<?> viewEvent(@PathVariable String eventName) {
-//        try{
-//            return new ResponseEntity<>(eventService.findEventByName(eventName), HttpStatus.OK);
-//        } catch (Exception e){
-//            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
-//        }
-//    }
+    @GetMapping("/viewEvent/{eventName}")
+    public ResponseEntity<?> viewEvent(@PathVariable String eventName) {
+        try {
+            return new ResponseEntity<>(eventService.findEventByName(eventName), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
 
     @DeleteMapping("/delete-event/{eventId}")
     public ResponseEntity<?> deleteEventById(@PathVariable Long eventId) {

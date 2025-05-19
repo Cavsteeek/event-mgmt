@@ -45,6 +45,33 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return userRepository.save(user);
     }
 
+    // Secure way to implement method above, Second way (refer to Patient-Mgmt-System and checkout your mapper class)
+    /*
+    @Override
+public ResponseEntity<UserResponseDto> signUp(SignUpRequest signUpRequest) {
+    User user = new User();
+    user.setFirstName(capitalize(signUpRequest.getFirstName()));
+    user.setLastName(capitalize(signUpRequest.getLastName()));
+    user.setEmail(signUpRequest.getEmail());
+    user.setUsername(signUpRequest.getUsername());
+    user.setRole(Role.USER);
+    user.setAccountCreatedAt(LocalDateTime.now());
+    user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
+
+    User savedUser = userRepository.save(user);
+
+    UserResponseDto responseDto = new UserResponseDto();
+    responseDto.setFirstName(savedUser.getFirstName());
+    responseDto.setLastName(savedUser.getLastName());
+    responseDto.setEmail(savedUser.getEmail());
+    responseDto.setUsername(savedUser.getUsername());
+    responseDto.setRole(savedUser.getRole().name());
+    responseDto.setAccountCreatedAt(savedUser.getAccountCreatedAt());
+
+    return ResponseEntity.ok(responseDto);
+}
+
+      */
     @Override
     public JwtAuthenticationResponse signIn(SignInRequest signInRequest) {
         try {

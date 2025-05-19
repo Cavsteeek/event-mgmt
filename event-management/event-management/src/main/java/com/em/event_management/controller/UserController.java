@@ -22,7 +22,7 @@ public class UserController {
 //        List<User> users = userRepository.findAll();
 //        List<User> users = userService.findAllUsers();
 //        return ResponseEntity.ok(users);
-
+ 
 //        try {
 //            return new ResponseEntity<>(userService.findAllUsers(), HttpStatus.OK);
 //        } catch (Exception e) {
