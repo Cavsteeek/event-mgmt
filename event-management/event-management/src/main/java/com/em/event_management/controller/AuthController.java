@@ -23,12 +23,13 @@ public class AuthController {
 
     @PostMapping("/sign-up")
     public ResponseEntity<?> signUp(@RequestBody SignUpRequest signUpRequest) {
-        try{
-            if(userService.usernameExists(signUpRequest.getUsername())){
+        // Check your Patient-Mgmt-System for how to properly implement using DTO's
+        try {
+            if (userService.usernameExists(signUpRequest.getUsername())) {
                 return ResponseEntity.badRequest().body("Username already exists");
             }
             return ResponseEntity.ok(service.signUp(signUpRequest));
-        }catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
