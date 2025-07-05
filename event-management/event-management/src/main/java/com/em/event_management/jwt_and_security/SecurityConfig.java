@@ -72,3 +72,4 @@ public class SecurityConfig {
         return config.getAuthenticationManager();
     }
 }
+// Rewrite this whole thing brother, refer to your auth-with-email-verification for correction

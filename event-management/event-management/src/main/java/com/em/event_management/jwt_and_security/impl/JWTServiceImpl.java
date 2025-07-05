@@ -10,8 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Map;
 import java.util.function.Function;
@@ -31,7 +29,12 @@ public class JWTServiceImpl implements JWTService {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parserBuilder().setSigningKey(getSignInKey()).build().parseClaimsJws(token).getBody();
+        return Jwts
+                .parserBuilder()
+                .setSigningKey(getSignInKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
     }
 
     @Override
@@ -51,7 +54,7 @@ public class JWTServiceImpl implements JWTService {
     }
 
     @Override
-    public Date extractExpiration(String token){
+    public Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
 
@@ -67,9 +70,10 @@ public class JWTServiceImpl implements JWTService {
     }
 
     @Override
-    public String generateRefreshToken(Map<String, Object> extraClaims, UserDetails userDetails){
+    public String generateRefreshToken(Map<String, Object> extraClaims, UserDetails userDetails) {
         return Jwts
-                .builder().setClaims(extraClaims)
+                .builder()
+                .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 72))
