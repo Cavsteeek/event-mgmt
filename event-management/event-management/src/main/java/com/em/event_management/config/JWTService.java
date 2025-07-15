@@ -1,4 +1,4 @@
-package com.em.event_management.jwt_and_security;
+package com.em.event_management.config;
 
 import org.springframework.security.core.userdetails.UserDetails;
 

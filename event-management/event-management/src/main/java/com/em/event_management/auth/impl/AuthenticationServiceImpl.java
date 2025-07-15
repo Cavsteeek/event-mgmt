@@ -1,11 +1,11 @@
 package com.em.event_management.auth.impl;
 
 import com.em.event_management.auth.AuthenticationService;
+import com.em.event_management.config.JWTService;
 import com.em.event_management.dto.JwtAuthenticationResponse;
 import com.em.event_management.dto.RefreshTokenRequest;
 import com.em.event_management.dto.SignInRequest;
 import com.em.event_management.dto.SignUpRequest;
-import com.em.event_management.jwt_and_security.JWTService;
 import com.em.event_management.model.Role;
 import com.em.event_management.model.User;
 import com.em.event_management.repository.UserRepository;
